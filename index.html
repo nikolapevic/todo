@@ -32,9 +32,50 @@
 
 			<!-- Completed tasks -->
 			<ul class="todo" id="completed"></ul>
+        
 		</div>
+
+        <div class="container">
+            <div class="progress" id="progress"></div>
+            <div id="calories">Cal</div>
+        </div>
+        
+        <div id="id01" class="modal">
+  
+          <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container1">
+                <label for="uname">Height</label><br>
+                <input class="measure" id="height" placeholder="Height(cm)" type="number" required><br>
+                <label for="psw">Weight</label><br>
+                <input class="measure" id="weight" placeholder="Weight(kg)" type="number" required><br>
+                <label for="psw">Age</label><br>
+                <input class="measure" id="age" placeholder="Age" type="number" required><br>
+                <label for="psw">Activity</label><br>
+                <input class="measure" id="activity" placeholder="Activity(1-5)" type="number" required><br>
+                <br>
+                <div>
+                <select name="gender" class="nofocus" id=gender required>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                </select>
+                </div>
+                <br>
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="button" onclick="caloriesRecommended()" class="donebtn">Done</button>
+            </div>
+          </form>
+        </div>
+
+                <div id="output"></div>
 
 		<!-- JavaScripts -->
 		<script src="resources/js/main.js"></script>
+        
+        <!-- These are probably out dated so you might want to use newest versions -->
+        <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
 	</body>
 </html>
