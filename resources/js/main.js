@@ -81,18 +81,18 @@ document.getElementById('item').addEventListener('keydown', function (e) {
     ]
    
     // ####################### NEWLY IMPLEMENTED getSum() & addCalories() FUNCTIONS
-    function getSum() {
-      var sum = 0;
-      for (var i in data.completed) { // Goes through completed items
-        var calories = data.completed[i].split(' ').slice(-1)[0];  // Gets the number part
-        sum += parseFloat(calories); // Adds to sum
-      }
-      return sum;
-    }
+function getSum() {
+  var sum = 0;
+  for (var i in data.completed) { // Goes through completed items
+    var calories = data.completed[i].split(' ').slice(-1)[0];  // Gets the number part
+    sum += parseFloat(calories); // Adds to sum
+  }
+  return sum;
+}
 
-     function addCalories(item) {
-        document.getElementById("calories").innerHTML = getSum() + "/" + suggesstedCalories;
-    }
+ function addCalories(item) {
+    document.getElementById("calories").innerHTML = getSum() + "/" + suggesstedCalories.toFixed(0);
+}
     
     var caloriesDone =  nutrition.caloriesArr.reduce(getSum);
 
@@ -138,7 +138,7 @@ window.onload = function progressBar() {
         easing: 'easeInOut'
     });
     
-    circle.animate(0.01);
+    circle.animate(getSum()/3000);
     document.getElementById('id01').style.display='block'
 };
 
@@ -181,7 +181,7 @@ function removeItem() {
     */
   addCalories() // ####################### UPDATES COMPUTATION OF CALORIES ONCE ITEM IS REMOVED
   dataObjectUpdated();
-  
+  circle.animate(getSum()/suggesstedCalories.toFixed(0));
   parent.removeChild(item);
 }
 
@@ -203,7 +203,7 @@ function completeItem() {
   // Check if the item should be added to the completed list or to re-added to the todo list
   var target = (id === 'todo') ? document.getElementById('completed'):document.getElementById('todo');
   addCalories();
-  circle.animate(nutrition.caloriesDone.reduce(getSum)/suggesstedCalories.toFixed(0));
+  circle.animate(getSum()/suggesstedCalories.toFixed(0));
   parent.removeChild(item);
   target.insertBefore(item, target.childNodes[0]);
 }
