@@ -247,7 +247,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
+var fity = 50;
 var gender = document.getElementById("gender").value;
 
 function caloriesRecommended() {
